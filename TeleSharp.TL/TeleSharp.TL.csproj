@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BigMath, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BigMath.0.5.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\BigMath.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\BigMath.0.5.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\BigMath.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
