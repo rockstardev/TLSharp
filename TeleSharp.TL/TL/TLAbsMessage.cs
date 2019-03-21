@@ -9,5 +9,6 @@ namespace TeleSharp.TL
 {
     public abstract class TLAbsMessage : TLObject
     {
+        public int Id { get; set; }
     }
 }

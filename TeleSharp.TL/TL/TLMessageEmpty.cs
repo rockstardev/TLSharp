@@ -18,8 +18,6 @@ namespace TeleSharp.TL
             }
         }
 
-        public int Id { get; set; }
-
 
         public void ComputeFlags()
         {

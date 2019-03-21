@@ -24,7 +24,6 @@ namespace TeleSharp.TL
         public bool MediaUnread { get; set; }
         public bool Silent { get; set; }
         public bool Post { get; set; }
-        public int Id { get; set; }
         public int? FromId { get; set; }
         public TLAbsPeer ToId { get; set; }
         public int? ReplyToMsgId { get; set; }

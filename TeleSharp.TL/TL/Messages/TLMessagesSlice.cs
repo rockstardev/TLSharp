@@ -19,9 +19,6 @@ namespace TeleSharp.TL.Messages
         }
 
         public int Count { get; set; }
-        public TLVector<TLAbsMessage> Messages { get; set; }
-        public TLVector<TLAbsChat> Chats { get; set; }
-        public TLVector<TLAbsUser> Users { get; set; }
 
 
         public void ComputeFlags()
