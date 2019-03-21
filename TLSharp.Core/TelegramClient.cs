@@ -139,6 +139,11 @@ namespace TLSharp.Core
             return _session.TLUser != null;
         }
 
+        public TLUser GetUser()
+        {
+            return _session.TLUser;
+        }
+
         public async Task<bool> IsPhoneRegisteredAsync(string phoneNumber)
         {
             if (String.IsNullOrWhiteSpace(phoneNumber))
