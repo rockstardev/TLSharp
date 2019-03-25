@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -105,6 +107,7 @@ namespace TLSharp.Core
             }
         }
 
+        public bool AutoretryFloodExceptions { get; set; }
         private async Task RequestWithDcMigration(TLMethod request)
         {
             if (_sender == null)
@@ -130,6 +133,16 @@ namespace TLSharp.Core
                     await ReconnectToDcAsync(e.DC);
                     // prepare the request for another try
                     request.ConfirmReceived = false;
+                }
+                catch(FloodException fle)
+                {
+                    if (AutoretryFloodExceptions)
+                    {
+                        Debug.WriteLine("Autoretry for flood exception triggered");
+                        await Task.Delay(fle.TimeToWait);
+                    }
+                    else
+                        throw fle;
                 }
             }
         }
