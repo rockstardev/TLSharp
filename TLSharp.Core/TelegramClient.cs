@@ -108,6 +108,7 @@ namespace TLSharp.Core
         }
 
         public bool AutoretryFloodExceptions { get; set; }
+        public int IoExceptionsAllowed { get; set; }
         private async Task RequestWithDcMigration(TLMethod request)
         {
             if (_sender == null)
@@ -143,6 +144,17 @@ namespace TLSharp.Core
                     }
                     else
                         throw fle;
+                }
+                catch (IOException ioe)
+                {
+                    if (IoExceptionsAllowed-- > 0)
+                    {
+                        Debug.WriteLine("IOException auto retry triggered");
+                        await Task.Delay(10000);
+                    }
+                    else
+                        throw ioe;
+
                 }
             }
         }
